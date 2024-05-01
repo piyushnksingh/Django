@@ -33,7 +33,9 @@
   }
   
   #welcome img {
-    border-radius: 50%;
+    border-radius: 5%;
+    max-width: 100%;
+    height: auto;
   }
   
   /* Latest Posts Section */
