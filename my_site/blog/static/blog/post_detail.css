@@ -1,0 +1,38 @@
+/* blog/post.css */
+#summary {
+    margin-bottom: 20px;
+}
+
+#summary h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#summary article {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#summary img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#summary address {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+#summary time {
+    font-style: italic;
+}
+
+main {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+main p {
+    margin-bottom: 20px;
+}
