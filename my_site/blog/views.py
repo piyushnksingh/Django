@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datetime import date
+from .models import Post
 
 all_posts=[
     {
@@ -21,7 +22,7 @@ all_posts=[
     },
     {
         "slug": "PROGRAMMING-IS-FUN",
-        "image": "CODING.jpg",
+        "image": "coding.jpg",
         "author": "Piyush",
         "date": date(2022,3,18),
         "title": "PROGRAMMING IS GREAT",
@@ -75,8 +76,9 @@ def get_date(post):
     return post['date']
 
 def starting_page(request):
-    sorted_posts=sorted(all_posts,key=get_date)
-    latest_posts=sorted_posts[-3:]
+    # sorted_posts=sorted(all_posts,key=get_date)
+    # latest_posts=sorted_posts[-3:]
+    latest_posts=Post.objects.all().order_by("-date")[:3]
     return render(request,"blog/index.html",{
         "posts":latest_posts,
     })
