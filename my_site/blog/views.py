@@ -1,79 +1,5 @@
-from django.shortcuts import render
-from datetime import date
+from django.shortcuts import render,get_object_or_404
 from .models import Post
-
-all_posts=[
-    {
-        "slug": "hike-in-the-mountains",
-        "image": "mountain.jpg",
-        "author": "Piyush",
-        "date": date(2021,7,21),
-        "title": "Mountain-hiking",
-        "excerpt": "There's nothing like this view.",
-        "content": """"
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-           culpa qui officia deserunt mollit anim id est laborum.
-        """
-    },
-    {
-        "slug": "PROGRAMMING-IS-FUN",
-        "image": "coding.jpg",
-        "author": "Piyush",
-        "date": date(2022,3,18),
-        "title": "PROGRAMMING IS GREAT",
-        "excerpt": "Did you ever spend hours searching that one error in your code?",
-        "content": """"
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-           culpa qui officia deserunt mollit anim id est laborum.
-
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-           culpa qui officia deserunt mollit anim id est laborum.
-        """
-    },
-    {
-        "slug": "into-the-woods",
-        "image": "woods.jpg",
-        "author": "Piyush",
-        "date": date(2020,8,5),
-        "title": "Nature At Its Best",
-        "excerpt": "Nature is amazing!",
-        "content": """"
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-           culpa qui officia deserunt mollit anim id est laborum.
-
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-           culpa qui officia deserunt mollit anim id est laborum.
-        """
-    }
-]
-
-def get_date(post):
-    return post['date']
 
 def starting_page(request):
     # sorted_posts=sorted(all_posts,key=get_date)
@@ -84,12 +10,14 @@ def starting_page(request):
     })
 
 def posts(request):
+    all_posts=Post.objects.all().order_by("-date")[:3]
     return render(request,"blog/all-posts.html",{
         "all_posts":all_posts,
     })
 
 def post_detail(request,slug):
-    identified_post=next(post for post in all_posts if post['slug'] == slug) #oneliner for finding post['slug']==slug.
+    identified_post=get_object_or_404(Post,slug=slug)
     return render(request,"blog/post-detail.html",{
-        "post":identified_post
+        "post":identified_post,
+        "post_tags":identified_post.tags.all()
     })
