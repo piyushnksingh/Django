@@ -5,13 +5,14 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload</title>
-    <link rel="stylesheet" href="{% static "reviews/styles.css" %}">
+    <title>Create a Profile</title>
+    <link rel="stylesheet" href="{% static "profiles/styles.css" %}">
   </head>
   <body>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <button type="submit">Upload!</button>
+    <form action="/profiles/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+        <input type="file" name="image" />
+        <button>Upload!</button>
     </form>
   </body>
 </html>
