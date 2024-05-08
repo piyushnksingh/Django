@@ -124,3 +124,11 @@ class SingleReviewView(DetailView):
 
 # def thank_you(request):
 #     return render(request,"reviews/thank_you.html")
+
+class AddFavouriteView(View):
+    def post(self,request):
+        review_id = request.POST["review_id"]
+        fav_review=Review.objects.get(pk=review_id)
+        request.session["favourite_review"]=fav_review
+        return HttpResponseRedirect("/reviews/" + review_id)
+        
