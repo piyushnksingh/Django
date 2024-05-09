@@ -25,13 +25,14 @@ class AllPostsView(ListView):
     ordering = ["-date"]
     context_object_name = "all_posts"
     
-class PostDetailView(View):
+class SinglePostView(View):
     def get(self,request,slug):
         post = Post.objects.get(slug=slug)
         context={
             "post":post,
             "post_tags":post.tags.all(),
             "comment_form":CommentForm,
+            "comments":post.comments.all().order_by("-id"),
         }
         return render(request,"blog/post-detail.html",context)
         
@@ -49,6 +50,7 @@ class PostDetailView(View):
             "post":post,
             "post_tags":post.tags.all(),
             "comment_form":CommentForm,
+            "comments":post.comments.all().order_by("-id"),
         }
         return render(request,"blog/post-detail.html",context)
         
