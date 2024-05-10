@@ -20,7 +20,7 @@ class StartingPageView(ListView):
         return data   
     
 class AllPostsView(ListView):
-    template_name = "/blog/all-posts.html"
+    template_name = "blog/all-posts.html"
     model = Post
     ordering = ["-date"]
     context_object_name = "all-posts"
