@@ -1,0 +1,77 @@
+/* index.css */
+
+/* Main Navigation */
+#main-navigation {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  #main-navigation h1 a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  #main-navigation nav {
+    margin-top: 10px;
+  }
+  
+  #main-navigation nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  /* Welcome Section */
+  #welcome {
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  #welcome header {
+    text-align: center;
+  }
+  
+  #welcome img {
+    border-radius: 5%;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Latest Posts Section */
+  #latest-posts {
+    padding: 20px;
+  }
+  
+  #latest-posts h2 {
+    text-align: center;
+  }
+  
+  #latest-posts ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .post {
+    margin-bottom: 20px;
+  }
+  
+  .post__content {
+    margin-left: 10px;
+  }
+  
+  .post__content h3 {
+    margin-top: 0;
+  }
+  
+  /* About Section */
+  #about {
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  #about h2 {
+    text-align: center;
+  }
+  
