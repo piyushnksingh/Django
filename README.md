@@ -1,3 +1,7 @@
+Playlist link : https://www.youtube.com/playlist?list=PLBxwSeQlMDNiNt72UmSvKBLsxPgGY_Jy-
+NOTE : 
+Last Module which is about Deployment(Module 16) is not completed because of AWS error.
+
 How to run : 
 step1 : install python
 step 2 : install Django by 
@@ -39,5 +43,4 @@ python [manage.py](http://manage.py) migrate
 # present in migrations folder
 ```
 
-NOTE : 
-Last Module which is about Deployment is not completed because of AWS error.
+
