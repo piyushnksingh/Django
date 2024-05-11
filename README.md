@@ -38,3 +38,6 @@ python [manage.py](http://manage.py) migrate
 # This command will create DB inside sqlite by reading contents
 # present in migrations folder
 ```
+
+NOTE : 
+Last Module which is about Deployment is not completed because of AWS error.
